@@ -1,26 +1,30 @@
 {
-  "name": "server",
+  "name": "odoo-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Backend for Odoo hackathon - Authentication, Vehicle, Driver modules",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "prisma": "prisma",
+    "migrate": "npx prisma migrate dev",
+    "generate": "npx prisma generate"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Member 3",
+  "license": "MIT",
   "dependencies": {
-    "@prisma/client": "^7.8.0",
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "pg": "^8.22.0",
-    "prisma": "^7.8.0"
+    "@prisma/client": "^5.14.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.14.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.4"
   }
 }
