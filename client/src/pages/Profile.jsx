@@ -1,5 +1,15 @@
+import MainLayout from "../layouts/MainLayout";
+
 function Profile() {
-  return <h1>Profile Page</h1>;
+  return (
+    <MainLayout>
+
+      <h1 className="text-3xl font-bold">
+        Profile
+      </h1>
+
+    </MainLayout>
+  );
 }
 
 export default Profile;
