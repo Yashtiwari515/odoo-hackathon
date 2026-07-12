@@ -6,14 +6,19 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
+<<<<<<< HEAD
     "prisma": "prisma",
     "migrate": "npx prisma migrate dev",
     "generate": "npx prisma generate"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> origin/member-4
   },
   "keywords": [],
   "author": "Member 3",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
     "@prisma/client": "^5.14.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -23,6 +28,17 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^5.14.0"
+=======
+    "@prisma/client": "^6.19.3",
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.22.0",
+    "prisma": "^6.19.3"
+>>>>>>> origin/member-4
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

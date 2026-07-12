@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const { getAllVehicles, getVehicleById, createVehicle, updateVehicle, deleteVehicle } = require('../controllers/vehicleController');
 const { authenticateUser } = require('../middleware/authMiddleware');
@@ -11,5 +12,28 @@ router.get('/:id', authenticateUser, authorizeRoles('ADMIN', 'MANAGER', 'DRIVER'
 router.post('/', authenticateUser, authorizeRoles('ADMIN', 'MANAGER'), createVehicle);
 router.put('/:id', authenticateUser, authorizeRoles('ADMIN', 'MANAGER'), updateVehicle);
 router.delete('/:id', authenticateUser, authorizeRoles('ADMIN'), deleteVehicle);
+=======
+const express = require("express");
+
+const router = express.Router();
+
+const {
+  getVehicles,
+  getVehicleById,
+  createVehicle,
+  updateVehicle,
+  deleteVehicle,
+} = require("../controllers/vehicleController");
+
+router.get("/", getVehicles);
+
+router.get("/:id", getVehicleById);
+
+router.post("/", createVehicle);
+
+router.put("/:id", updateVehicle);
+
+router.delete("/:id", deleteVehicle);
+>>>>>>> origin/member-4
 
 module.exports = router;
