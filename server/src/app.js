@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+
+const authRoutes = require('./routes/authRoutes');
+const vehicleRoutes = require('./routes/vehicleRoutes');
+const driverRoutes = require('./routes/driverRoutes');
+const errorMiddleware = require('./middleware/errorMiddleware');
+
+const app = express();
+
+// Global middleware
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/vehicles', vehicleRoutes);
+app.use('/api/drivers', driverRoutes);
+
+// Error handling (after routes)
+app.use(errorMiddleware);
+=======
 const express = require("express");
 const cors = require("cors");
 
@@ -19,12 +45,19 @@ const fuelRoutes = require("./routes/fuelRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const reportRoutes = require("./routes/reportRoutes");
+const authRoutes = require("./routes/authRoutes");
+const vehicleRoutes = require("./routes/vehicleRoutes");
+const driverRoutes = require("./routes/driverRoutes");
 
+app.use("/api/drivers", driverRoutes);
+app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/maintenance", maintenanceRoutes);
 app.use("/api/fuel", fuelRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/reports", reportRoutes);
+>>>>>>> origin/member-4
 
 module.exports = app;

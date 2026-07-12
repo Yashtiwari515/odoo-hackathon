@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Odoo Backend Test</title>
+  <style>
+    body {font-family: Arial, sans-serif; margin: 2rem;}
+    button {padding: 0.5rem 1rem; cursor: pointer;}
+    pre {background:#f4f4f4; padding:1rem;}
+  </style>
+</head>
+<body>
+  <h1>Backend API Smoke Test</h1>
+  <button id="runTest">Run Test</button>
+  <pre id="output"></pre>
+  <script>
+    const output = document.getElementById('output');
+    const log = (...args) => { output.textContent += args.join(' ') + '\n'; };
+    async function run() {
+      try {
+        // 1. Register
+        log('Register...');
+        let res = await fetch('http://localhost:5000/api/auth/register', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({name:'TestUser', email:'test@example.com', password:'Pass1234', role:'ADMIN'})
+        });
+        let data = await res.json();
+        log('Register response:', JSON.stringify(data));
+        const token = data.token;
+        // 2. Login
+        log('Login...');
+        res = await fetch('http://localhost:5000/api/auth/login', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({email:'test@example.com', password:'Pass1234'})
+        });
+        data = await res.json();
+        log('Login response:', JSON.stringify(data));
+        const loginToken = data.token;
+        // 3. Profile
+        log('Profile...');
+        res = await fetch('http://localhost:5000/api/auth/profile', {
+          headers: { 'Authorization': `Bearer ${loginToken}` }
+        });
+        data = await res.json();
+        log('Profile response:', JSON.stringify(data));
+        log('All tests completed.');
+      } catch (e) { log('Error:', e); }
+    }
+    document.getElementById('runTest').addEventListener('click', run);
+  </script>
+</body>
+</html>
